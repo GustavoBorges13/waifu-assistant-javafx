@@ -1,66 +1,96 @@
 # Waifu Assistente
-Waifu Assistente, uma IA que conversa periodicamente com você conforme realiza perguntas para ela tanto via console, microfone (whisper) ou na twitch.
+Waifu Assistente é uma IA interativa que conversa periodicamente com você e responde a perguntas feitas via console, microfone (usando Whisper) ou no chat da Twitch.
 
 [![Latest Stable Version](https://img.shields.io/badge/version-v0.0.0.1-blue)](https://github.com/GustavoBorges13/waifu-assistant-javafx/releases)
 [![GitHub last commit](https://img.shields.io/github/last-commit/GustavoBorges13/waifu-assistant-javafx)](https://github.com/GustavoBorges13/waifu-assistant-javafx/commits/main)
 <!---[![Build Status](https://app.travis-ci.com/GustavoBorges13/RunBlocker.svg?branch=main)](https://app.travis-ci.com/GustavoBorges13/RunBlocker)-->
 
 ```diff
-- Em desenvolvimento!
+- Versão mais recente: Em desenvolvimento!
 + Autor: Gustavo Silva
 # Projeto solo
 ```
 
-## Resumo funcionamento (Em desenvolvimento)
-O projeto funciona da seguinte forma, será uma interface gráfica onde aberto pela primeira vez solicitará dados de API nois quais tais credenciais serão armazenadas diretamente no ambiente de variaveis do windows para manter a segurança do mesmo.
-O programa na proxima vez que for aberto irá procurar por essas chaves para prosseguir na inicialização.
-Após aberto o usuário terá um painel interativo para escolher se deseja enviar comandos via texto para o chatboot, ou usar o chat da twitch ou o próprio microfone.
-1. Caso seja usado o console, o texto sera enviado para o chatboot chatanywhere que irá gerar uma resposta com base na configuração que o usuario escolher tais como a personalidade, o chatboot retorna a mensagem, a mensagem será utilizada para conversão em audio via elevenlabs que irá gerar um audio em .mp3, posteriormente o audio será convertido para .wav e acionado a classe de conexão com o VTubeStudio para executar comandos de movimentação da personagem e reprodução de audio que serão realizados em threads.
-2. Caso seja usado o chat via twitch, será realizado a captura do texto que contem o comando "!TTS" e enviado para o chatboot chatanywhere que irá gerar uma resposta com base na configuração que o usuario escolher tais como a personalidade, o chatboot retorna a mensagem, a mensagem será utilizada para conversão em audio via elevenlabs que irá gerar um audio em .mp3, posteriormente o audio será convertido para .wav e acionado a classe de conexão com o VTubeStudio para executar comandos de movimentação da personagem e reprodução de audio que serão realizados em threads.
-3. Caso seja usado o microfone, será realizado o speech-to-text para converto a fala em texto e enviado para o chatboot chatanywhere que irá gerar uma resposta com base na configuração que o usuario escolher tais como a personalidade, o chatboot retorna a mensagem, a mensagem será utilizada para conversão em audio via elevenlabs que irá gerar um audio em .mp3, posteriormente o audio será convertido para .wav e acionado a classe de conexão com o VTubeStudio para executar comandos de movimentação da personagem e reprodução de audio que serão realizados em threads.
+## Arquitetura e Fluxo de Dados
+A arquitetura do Waifu Assistente segue um modelo modular e orientado a eventos, onde cada componente tem uma responsabilidade clara. O fluxo de dados e as comunicações entre os módulos são gerenciados de forma eficiente para garantir uma interação suave e responsiva. Abaixo está uma visão geral da estrutura e do funcionamento do código:
+```
+Imagem em breve !
+```
 
-Sobre outras implementações que eu penso no futuro:
-- Menu para controlar algumas funcionalidades da personagem no VTubeStudio (pouco viavel);
-- Banco de dados para gerar um historico de mensagens e audios gerados que servirão para deeplearning, consultar quantas requisições foram realizadas ao longo do dia, verificar erros (serve como log), separar o nome de quem enviou o comando na twitch da resposta, assim a gente consegue ver quantas pessoas fora o desenvolvedor utilizou o mesmo para consultas de estatisticas (bem provavel que eu faça isso);
-- Botões uteis para ligar, desligar, enviar, deletar e etc.
+## Inspiração
+Este projeto foi inspirado em várias ferramentas e projetos da comunidade, que forneceram uma base sólida e ideias inovadoras para o desenvolvimento do Waifu Assistente. Alguns dos principais projetos e tecnologias que influenciaram este trabalho incluem:
 
-## Ambiente Virtual
-Utilizado Eclipse IDE 2024 na linguagem JAVA.
-Interface gráfica com JavaFX (SDK) e scenebuilder para construção.
-Compatível com Windows 11 64bits.
+- OpenAI GPT Models: A arquitetura GPT-3.5 serviu como base para a construção do chatbot.
+- ElevenLabs: Inspirou a integração de tecnologia avançada de conversão de texto em fala.
+- VTube Studio: Provedor de API para controle de personagens virtuais.
+- Whisper by OpenAI: Influência fundamental para a conversão de fala em texto no projeto.
+- Outros projetos de assistentes virtuais e VTubers, que pavimentaram o caminho para a combinação de interatividade em tempo real com modelos de IA.
 
-## Instalação (Não disponivel no momento)
+## Resumo do Funcionamento (Em desenvolvimento)
+O projeto funciona da seguinte forma: Na primeira vez que o programa é aberto, ele solicita as credenciais de API, que são armazenadas diretamente nas variáveis de ambiente do Windows para garantir a segurança. Nas próximas execuções, o programa buscará essas chaves automaticamente para prosseguir com a inicialização. Após o início, o usuário terá um painel interativo onde poderá escolher entre enviar comandos via texto para o chatbot, usar o chat da Twitch ou o próprio microfone.
 
+### Modos de Interação
+- Console: O texto inserido é enviado ao chatbot ChatAnywhere, que gera uma resposta baseada na configuração escolhida pelo usuário, como a personalidade. A resposta é convertida em áudio via ElevenLabs, gerando um arquivo MP3. Esse áudio é então convertido para WAV e enviado à classe de conexão com o VTube Studio, que executa comandos de movimentação da personagem e reprodução do áudio em threads separadas.
 
-## APIs utilizadas
-### Para o Chatbot, utilizado ChatAnyWhere - GPT_API_free
+- Chat da Twitch: O programa captura comandos no chat que contêm "!TTS" e envia o texto ao ChatAnywhere. A resposta segue o mesmo fluxo de conversão em áudio e interação com o VTube Studio.
+
+- Microfone: A fala é convertida em texto usando Speech-to-Text e enviada ao ChatAnywhere, seguindo o fluxo de interação descrito acima.
+
+### Futuras Implementações
+Menu para controlar algumas funcionalidades da personagem no VTube Studio (pouco viável).
+Banco de dados para armazenar o histórico de mensagens e áudios gerados, que servirão para aprendizado de máquina, consulta de estatísticas, e logs de erros.
+Botões úteis para ligar, desligar, enviar, deletar, etc.
+
+### Ambiente de Desenvolvimento
+- IDE: Eclipse IDE 2024;
+- Linguagem: Java;
+- Interface Gráfica: JavaFX com SceneBuilder;
+- Compatível com: Windows 11 64 bits.
+
+### Instalação
+Ainda não disponível.
+
+### APIs utilizadas
+#### Para o Chatbot, utilizado ChatAnyWhere - GPT_API_free
 - Repositorio: [https://github.com/chatanywhere/GPT_API_free](https://github.com/chatanywhere/GPT_API_free);
 - Status Credito API: [https://api.chatanywhere.tech](https://api.chatanywhere.tech);
 - Status Disponibilidade API: [https://status.chatanywhere.tech](https://status.chatanywhere.tech);
 - Base_url: [https://api.chatanywhere.tech/v1/chat/completions](https://api.chatanywhere.tech/v1/chat/completions);
 - model: gpt-3.5-turbo (essa que uso atualmente para varias requisições) | gpt-4o-mini | gpt-4 (3 chamadas por dia).
 
-### Para text-to-speech, utilizado ElevenLabs API
+#### Para text-to-speech, utilizado ElevenLabs API
 - API site: [https://elevenlabs.io/](https://elevenlabs.io/);
 - Documentação API: [https://elevenlabs.io/docs/introduction](https://elevenlabs.io/docs/introduction);
 - Vozes utilizadas para portugues-br: Gabby e Michele (preferida);
 - Vozes utilizadas para english-US: Rebecca - British mediations;
 - model: eleven_multilingual_v2 (a melhor), eleven_turbo_v2, eleven_monolingual_v1;
 - json object config: voice_settings -> stability: 0.0, similarity_boost: 1.0, output_format: mp3_44100_128;
-- *Observação: usei javax.sound.sampled para redirecionar o som para outra entrada de dispositivo mas para isso tem que converter .mp3 para .wav para manter compatibilidade. Infelizmente elevenlabs nao oferece suporte para .wav, apenas para MP3, PCM (S16LE) e μ-law (mulaw).
 
-### Para a personagem Waifu, utilizado VTube Studio API
-- Precisa habilitar nas configurações do aplicativo o uso de API (habilitar plugins) na porta 8001.
-- Apos realizar a primeira requisição, precisa aceitar no aplicativo a request, e capturar o token para armazenar posteriormente pra nao ficar precisando mais aceitar toda hora.
-- Feito isso, o uso dessa API, permite enviar dados para o VTube Studio, acionar parametros, comandos e muito mais conforme na documentação [https://github.com/DenchiSoft/VTubeStudio](https://github.com/DenchiSoft/VTubeStudio)
+Observação: o áudio é convertido de MP3 para WAV para compatibilidade com a API do VTube Studio, usando javax.sound.sampled. A ElevenLabs não suporta diretamente o formato WAV, apenas MP3, PCM (S16LE) e μ-law (mulaw).
 
-### Para reconhecimento de fala (Whisper) - Em processo de aprendizagem
-- Estou tentando ver a possibilidade de integrar com o projeto atual esse repositorio [https://github.com/openai/whisper](https://github.com/openai/whisper);
-- Isso serveria para capturar meu audio (microfone) e converter em texto que seria utilizado posteriormente no chatbot para gerar uma resposta.
+#### Para a personagem Waifu, utilizado VTube Studio API
+- Configuração API: Habilite a API nas configurações do VTube Studio (porta 8001) em General Settings. Após a primeira requisição, aceite a solicitação no aplicativo e armazene o token gerado para futuras execuções conforme a imagem abaixo
   
-## Programas dependentes
-VB-CABLE Virtual Audio Device disponivel em[ https://vb-audio.com/Cable/](https://vb-audio.com/Cable/). Utilizado para emular um dispositivo virtual em output e input. Onde no programa será convertido audios .mp3 para .wav e redirecionados para o dispositivo virtual alvo.
-Abaixo está um exemplo do codigo usado para capturar os dispositivos na maquina:
+  ![image](https://github.com/user-attachments/assets/04a2424f-9e5f-4325-abaf-11f6acf65c3f)
+
+  ![image](https://github.com/user-attachments/assets/a614de5c-3f7f-4bcf-9b89-94107a8702b4)
+
+- Configuração Saída do Microfone: em General Settings -> Microphone Settings, precisa marcar a caixa "Use microphone" e selecionar a saída para CABLE Output (VB-Audio Virtual Cable) conforme a imagem abaixo.
+  
+  ![image](https://github.com/user-attachments/assets/d2864f93-71d8-46e5-ac7c-aef4f418f1ba)
+
+- Configuração do movimento da boca (lip-sync): em Model Settings -> Mouth Open, alterar a Input para VoiceVolume para mexer a boca de acordo com o audio enviado ao Virtual Cable conforme a imagem abaixo.
+
+  ![image](https://github.com/user-attachments/assets/fb74a338-3b42-4834-849d-3382675888de)
+ 
+- Documentação da API: [https://github.com/DenchiSoft/VTubeStudio](https://github.com/DenchiSoft/VTubeStudio)
+
+#### Para reconhecimento de fala (Whisper) - Em processo de aprendizagem
+- Repositório: [https://github.com/openai/whisper](https://github.com/openai/whisper);
+- Função: Captura de áudio do microfone e conversão em texto para uso no chatbot.
+  
+### Programas dependentes
+VB-CABLE Virtual Audio Device: Disponível em VB-Audio. Usado para emular um dispositivo de áudio virtual para redirecionar o som do programa para um dispositivo alvo. Abaixo está um exemplo de código para capturar dispositivos de áudio disponíveis:
 ```diff
         import javax.sound.sampled.*;
          ...
@@ -71,9 +101,7 @@ Abaixo está um exemplo do codigo usado para capturar os dispositivos na maquina
             System.out.println(i + ": " + mixers[i].getName() + " - " + mixers[i].getDescription());
         }
 
-        // Selecione o índice do dispositivo que você quer usar
         int deviceIndex = 15; // Altere este índice para o dispositivo desejado
-
 ```
 Exemplo de retorno:
 ```diff
@@ -99,4 +127,4 @@ Dispositivos de áudio disponíveis:
 18: CABLE Output (VB-Audio Virtual Cable) - Direct Audio Device: DirectSound Capture
 19: Microphone (Realtek(R) Audio) - Direct Audio Device: DirectSound Capture
 ```
-Ali no caso nosso é o indice 15 nosso dispositivo alvo para tocar os audios.
+Neste exemplo, o índice 15 corresponde ao nosso dispositivo alvo para reprodução de áudio.
