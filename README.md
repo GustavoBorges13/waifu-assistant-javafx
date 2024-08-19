@@ -90,7 +90,7 @@ Observação: o áudio é convertido de MP3 para WAV para compatibilidade com a 
 - Função: Captura de áudio do microfone e conversão em texto para uso no chatbot.
   
 ### Programas dependentes
-VB-CABLE Virtual Audio Device: Disponível em VB-Audio. Usado para emular um dispositivo de áudio virtual para redirecionar o som do programa para um dispositivo alvo. Abaixo está um exemplo de código para capturar dispositivos de áudio disponíveis:
+VB-CABLE Virtual Audio Device: [Disponível em VB-Audio](https://vb-audio.com/Cable/). Usado para emular um dispositivo de áudio virtual para redirecionar o som do programa para um dispositivo alvo. Abaixo está um exemplo de código para capturar dispositivos de áudio disponíveis:
 ```diff
         import javax.sound.sampled.*;
          ...
