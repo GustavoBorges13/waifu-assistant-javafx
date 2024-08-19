@@ -51,14 +51,14 @@ Botões úteis para ligar, desligar, enviar, deletar, etc.
 Ainda não disponível.
 
 ### APIs utilizadas
-#### Para o Chatbot, utilizado ChatAnyWhere - GPT_API_free
+#### 1) Para o Chatbot, utilizado ChatAnyWhere - GPT_API_free
 - Repositorio: [https://github.com/chatanywhere/GPT_API_free](https://github.com/chatanywhere/GPT_API_free);
 - Status Credito API: [https://api.chatanywhere.tech](https://api.chatanywhere.tech);
 - Status Disponibilidade API: [https://status.chatanywhere.tech](https://status.chatanywhere.tech);
 - Base_url: [https://api.chatanywhere.tech/v1/chat/completions](https://api.chatanywhere.tech/v1/chat/completions);
 - model: gpt-3.5-turbo (essa que uso atualmente para varias requisições) | gpt-4o-mini | gpt-4 (3 chamadas por dia).
 
-#### Para text-to-speech, utilizado ElevenLabs API
+#### 2) Para text-to-speech, utilizado ElevenLabs API
 - API site: [https://elevenlabs.io/](https://elevenlabs.io/);
 - Documentação API: [https://elevenlabs.io/docs/introduction](https://elevenlabs.io/docs/introduction);
 - Vozes utilizadas para portugues-br: Gabby e Michele (preferida);
@@ -68,7 +68,7 @@ Ainda não disponível.
 
 Observação: o áudio é convertido de MP3 para WAV para compatibilidade com a API do VTube Studio, usando javax.sound.sampled. A ElevenLabs não suporta diretamente o formato WAV, apenas MP3, PCM (S16LE) e μ-law (mulaw).
 
-#### Para a personagem Waifu, utilizado VTube Studio API
+#### 3) Para a personagem Waifu, utilizado VTube Studio API
 - Configuração API: Habilite a API nas configurações do VTube Studio (porta 8001) em General Settings. Após a primeira requisição, aceite a solicitação no aplicativo e armazene o token gerado para futuras execuções conforme a imagem abaixo
   
   ![image](https://github.com/user-attachments/assets/04a2424f-9e5f-4325-abaf-11f6acf65c3f)
@@ -85,7 +85,7 @@ Observação: o áudio é convertido de MP3 para WAV para compatibilidade com a 
  
 - Documentação da API: [https://github.com/DenchiSoft/VTubeStudio](https://github.com/DenchiSoft/VTubeStudio)
 
-#### Para reconhecimento de fala (Whisper) - Em processo de aprendizagem
+#### 4) Para reconhecimento de fala (Whisper) - Em processo de aprendizagem
 - Repositório: [https://github.com/openai/whisper](https://github.com/openai/whisper);
 - Função: Captura de áudio do microfone e conversão em texto para uso no chatbot.
   
