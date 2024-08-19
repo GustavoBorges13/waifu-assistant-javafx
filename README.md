@@ -19,7 +19,7 @@ Imagem em breve !
 
 ## Inspiração
 Este projeto foi inspirado em várias ferramentas e projetos da comunidade, que forneceram uma base sólida e ideias inovadoras para o desenvolvimento do Waifu Assistente. Alguns dos principais projetos e tecnologias que influenciaram este trabalho incluem:
-
+- O projeto que o [JarikDem-Bot](https://github.com/JarikDem-Bot/ai-waifu) fez em python serviu de inspiração para este projeto.
 - OpenAI GPT Models: A arquitetura GPT-3.5 serviu como base para a construção do chatbot.
 - ElevenLabs: Inspirou a integração de tecnologia avançada de conversão de texto em fala.
 - VTube Studio: Provedor de API para controle de personagens virtuais.
